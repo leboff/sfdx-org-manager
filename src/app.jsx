@@ -1,9 +1,13 @@
 import React from 'react';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import AppLayout from './AppLayout/AppLayout';
 
 export default class App extends React.Component {
   render() {
-    return (<div>
-      <h2>Welcome to React! 16.7.0</h2>
-    </div>);
+    return (
+      <React.Fragment>
+        <CssBaseline />
+        <AppLayout />
+      </React.Fragment>);
   }
 }

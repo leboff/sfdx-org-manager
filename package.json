@@ -48,12 +48,15 @@
   },
   "dependencies": {
     "@material-ui/core": "^3.9.0",
+    "@material-ui/icons": "^3.0.2",
     "electron-compile": "^6.4.4",
     "electron-devtools-installer": "^2.1.0",
     "electron-squirrel-startup": "^1.0.0",
+    "opn": "^5.4.0",
     "react": "16.7.0",
     "react-dom": "16.7.0",
-    "react-hot-loader": "^3.0.0-beta.6"
+    "react-hot-loader": "^3.0.0-beta.6",
+    "sfdx-node": "^1.1.0"
   },
   "devDependencies": {
     "babel-plugin-transform-async-to-generator": "^6.24.1",

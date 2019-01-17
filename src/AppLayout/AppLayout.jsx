@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import AppBar from './AppBar';
 import OrgList from '../Org/OrgList';
+import OrgNew from '../Org/OrgNew';
 
 const styles = theme => ({
   root: {
@@ -30,6 +31,7 @@ class AppLayout extends React.Component {
         <main>
           <div className={classNames(classes.layout, classes.orgGrid)}>
             <OrgList />
+            <OrgNew />
           </div>
         </main>
       </div>

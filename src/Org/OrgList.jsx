@@ -2,8 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
+import List from '@material-ui/core/List';
 import Org from './Org';
-import * as sfdx from 'sfdx-node';
+
+const sfdx = require('sfdx-node');
 
 const styles = theme => ({
   root: {
@@ -37,7 +39,6 @@ class OrgList extends React.Component {
   getOrgs() {
     sfdx.org.list()
     .then((orgs) => {
-      console.log(orgs);
       this.setState({
         orgs,
       });
@@ -54,9 +55,11 @@ class OrgList extends React.Component {
       <Grid container spacing={24}>
         <Grid item xs={12}>
           <Grid container className={classes.demo} justify="center" spacing={32}>
-            {this.state.orgs.nonScratchOrgs.map(value => (
-              <Org key={value.orgId} org={value} />
-            ))}
+            <List>
+              {this.state.orgs.nonScratchOrgs.map(value => (
+                <Org key={value.orgId} org={value} />
+              ))}
+            </List>
           </Grid>
         </Grid>
       </Grid>

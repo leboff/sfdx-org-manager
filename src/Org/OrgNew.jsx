@@ -1,8 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Fab } from '@material-ui/core';
-import { withStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import { Fab, CircularProgress } from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
+import { withStyles } from '@material-ui/core/styles';
+import Backdrop from '@material-ui/core/Backdrop';
+
+const sfdx = require('sfdx-node');
 
 const styles = ({
   fab: {
@@ -16,12 +26,94 @@ const styles = ({
 });
 
 class OrgNew extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      open: false,
+      backdrop: false,
+      alias: '',
+    };
+
+    this.handleClickOpen = this.handleClickOpen.bind(this);
+    this.handleClose = this.handleClose.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleAuth = this.handleAuth.bind(this);
+  }
+
+
+  handleAuth() {
+    this.setState({ open: false });
+    this.setState({ backdrop: true });
+    return sfdx.auth.webLogin({
+      setalias: this.state.alias,
+      instanceurl: 'https://test.salesforce.com',
+    })
+    .then(() => {
+      this.handleClose();
+    });
+  }
+
+  handleChange(event) {
+    this.setState({ alias: event.target.value });
+  }
+
+  handleClickOpen() {
+    this.setState({ open: true });
+  }
+
+  handleClose() {
+    this.setState({ backdrop: false });
+    this.setState({ open: false });
+  }
+
   render() {
     const { classes } = this.props;
     return (
-      <Fab className={classes.fab} color="secondary">
-        <AddIcon />
-      </Fab>
+      <div>
+        <Backdrop open={this.state.backdrop} />
+        <Fab className={classes.fab} color="secondary" onClick={this.handleClickOpen}>
+          <AddIcon />
+        </Fab>
+        <Dialog
+          open={this.state.backdrop}
+        >
+          <DialogTitle id="form-dialog-title">Authenticating</DialogTitle>
+          <DialogContent>
+            <CircularProgress />
+          </DialogContent>
+        </Dialog>
+        <Dialog
+          open={this.state.open}
+          onClose={this.handleClose}
+          aria-labelledby="form-dialog-title"
+        >
+          <DialogTitle id="form-dialog-title">Connect a New Org</DialogTitle>
+          <DialogContent>
+            <DialogContentText>
+              Authenticate a new Salesforce Org to add it to your org list.
+              Enter an optional alias below.
+            </DialogContentText>
+            <TextField
+              autoFocus
+              margin="dense"
+              id="alias"
+              label="Alias"
+              value={this.state.value}
+              onChange={this.handleChange}
+              type="text"
+              fullWidth
+            />
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={this.handleClose} color="primary">
+              Cancel
+            </Button>
+            <Button onClick={this.handleAuth} color="primary">
+              Authenticate
+            </Button>
+          </DialogActions>
+        </Dialog>
+      </div>
     );
   }
 }

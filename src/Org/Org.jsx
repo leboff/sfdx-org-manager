@@ -40,12 +40,6 @@ class Org extends React.Component {
     this.open = this.open.bind(this);
   }
 
-  // auth() {
-  //   return sfdx.auth.webLogin({
-  //     instanceurl: 'https://test.salesforce.com',
-  //   });
-  // }
-
   open() {
     sfdx.org.open({
       targetusername: this.props.org.username,

@@ -47,7 +47,7 @@ class OrgList extends React.Component {
 
 
   render() {
-    const { classes } = this.props;
+    const { classes, search } = this.props;
     if (!this.state.orgs.nonScratchOrgs) {
       return <div>Loading...</div>;
     }
@@ -56,7 +56,10 @@ class OrgList extends React.Component {
         <Grid item xs={12}>
           <Grid container className={classes.demo} justify="center" spacing={32}>
             <List>
-              {this.state.orgs.nonScratchOrgs.map(value => (
+              {this.state.orgs.nonScratchOrgs.filter(org => (
+                (org.alias && org.alias.includes(search)) ||
+                (org.username && org.username.includes(search))
+              )).map(value => (
                 <Org key={value.orgId} org={value} />
               ))}
             </List>
@@ -68,6 +71,7 @@ class OrgList extends React.Component {
 }
 
 OrgList.propTypes = {
+  search: PropTypes.string.isRequired,
   classes: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
 };
 

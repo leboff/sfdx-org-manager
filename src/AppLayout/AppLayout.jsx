@@ -23,14 +23,29 @@ const styles = theme => ({
 });
 
 class AppLayout extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      search: '',
+    };
+    this.handleSearchChange = this.handleSearchChange.bind(this);
+  }
+
+  handleSearchChange(search) {
+    this.setState({
+      search,
+    });
+  }
+
   render() {
     const { classes } = this.props;
     return (
       <div className={classes.root}>
-        <AppBar />
+        <AppBar search={this.state.search} onSearchChange={this.handleSearchChange} />
         <main>
           <div className={classNames(classes.layout, classes.orgGrid)}>
-            <OrgList />
+            <OrgList search={this.state.search} />
             <OrgNew />
           </div>
         </main>

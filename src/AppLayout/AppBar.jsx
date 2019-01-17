@@ -70,38 +70,58 @@ const styles = theme => ({
   },
 });
 
-function SearchAppBar(props) {
-  const { classes } = props;
-  return (
-    <div className={classes.root}>
-      <AppBar position="fixed" color="secondary">
-        <Toolbar>
-          <IconButton className={classes.menuButton} color="inherit" aria-label="Open drawer">
-            <MenuIcon />
-          </IconButton>
-          <Typography className={classes.title} variant="h6" color="inherit" noWrap>
-            SFDX Org Manager
-          </Typography>
-          <div className={classes.grow} />
-          <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              <SearchIcon />
+class SearchAppBar extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.handleSearchChange = this.handleSearchChange.bind(this);
+  }
+
+  handleSearchChange(e) {
+    this.props.onSearchChange(e.target.value);
+  }
+
+  render() {
+    const { classes } = this.props;
+    return (
+      <div className={classes.root}>
+        <AppBar position="fixed" color="secondary">
+          <Toolbar>
+            <IconButton className={classes.menuButton} color="inherit" aria-label="Open drawer">
+              <MenuIcon />
+            </IconButton>
+            <Typography className={classes.title} variant="h6" color="inherit" noWrap>
+              SFDX Org Manager
+            </Typography>
+            <div className={classes.grow} />
+            <div className={classes.search}>
+              <div className={classes.searchIcon}>
+                <SearchIcon />
+              </div>
+              <InputBase
+                placeholder="Search…"
+                classes={{
+                  root: classes.inputRoot,
+                  input: classes.inputInput,
+                }}
+                onChange={this.handleSearchChange}
+                value={this.props.search}
+              />
             </div>
-            <InputBase
-              placeholder="Search…"
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-            />
-          </div>
-        </Toolbar>
-      </AppBar>
-    </div>
-  );
+          </Toolbar>
+        </AppBar>
+      </div>
+    );
+  }
 }
 
+SearchAppBar.defaultProps = {
+  search: '',
+};
+
 SearchAppBar.propTypes = {
+  search: PropTypes.string,
+  onSearchChange: PropTypes.func.isRequired,
   classes: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
 };
 

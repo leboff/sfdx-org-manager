@@ -7,10 +7,11 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import { Fab, CircularProgress } from '@material-ui/core';
+import { Fab, CircularProgress, FormGroup, FormControlLabel } from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
 import { withStyles } from '@material-ui/core/styles';
 import Backdrop from '@material-ui/core/Backdrop';
+import Switch from '@material-ui/core/Switch';
 
 const sfdx = require('sfdx-node');
 
@@ -31,12 +32,14 @@ class OrgNew extends React.Component {
     this.state = {
       open: false,
       backdrop: false,
+      setDefault: false,
       alias: '',
     };
 
     this.handleClickOpen = this.handleClickOpen.bind(this);
     this.handleClose = this.handleClose.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleSwitch = this.handleSwitch.bind(this);
     this.handleAuth = this.handleAuth.bind(this);
   }
 
@@ -46,6 +49,7 @@ class OrgNew extends React.Component {
     this.setState({ backdrop: true });
     return sfdx.auth.webLogin({
       setalias: this.state.alias,
+      setdefaultusername: this.state.setDefault,
       instanceurl: 'https://test.salesforce.com',
     })
     .then(() => {
@@ -55,6 +59,10 @@ class OrgNew extends React.Component {
 
   handleChange(event) {
     this.setState({ alias: event.target.value });
+  }
+
+  handleSwitch() {
+    this.setState({ setDefault: !this.state.setDefault });
   }
 
   handleClickOpen() {
@@ -103,6 +111,18 @@ class OrgNew extends React.Component {
               type="text"
               fullWidth
             />
+            <FormGroup row>
+              <FormControlLabel
+                control={
+                  <Switch
+                    checked={this.state.setDefault}
+                    onChange={this.handleSwitch}
+                    value={this.state.setDefault}
+                  />
+                }
+                label="Set as Default Username"
+              />
+            </FormGroup>
           </DialogContent>
           <DialogActions>
             <Button onClick={this.handleClose} color="primary">

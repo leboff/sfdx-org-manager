@@ -11,7 +11,8 @@ import OpenInBrowserIcon from '@material-ui/icons/OpenInBrowser';
 import CloudIcon from '@material-ui/icons/Cloud';
 import green from '@material-ui/core/colors/green';
 import deepOrange from '@material-ui/core/colors/deepOrange';
-import { Tooltip } from '@material-ui/core';
+import { Tooltip, Typography } from '@material-ui/core';
+import Chip from '@material-ui/core/Chip';
 
 const sfdx = require('sfdx-node');
 const opn = require('opn');
@@ -29,6 +30,9 @@ const styles = ({
   },
   tooltipPlacementBottom: {
     margin: '2px 0',
+  },
+  chip: {
+    margin: '0 8px',
   },
 });
 
@@ -67,13 +71,24 @@ class Org extends React.Component {
           </Tooltip>
         </ListItemAvatar>
         <ListItemText
-          primary={org.alias}
+          primary={
+            <React.Fragment>
+              <Typography component="span" variant="subheading" color="textPrimary">
+                {org.alias}
+                {org.isDefaultUsername ? (
+                  <Chip className={classes.chip} label="default" />
+                ) : ''}
+              </Typography>
+            </React.Fragment>
+          }
           secondary={org.username}
         />
         <ListItemSecondaryAction>
-          <IconButton aria-label="Open" onClick={this.open}>
-            <OpenInBrowserIcon />
-          </IconButton>
+          { org.connectedStatus === 'Connected' &&
+            (<IconButton aria-label="Open" onClick={this.open}>
+              <OpenInBrowserIcon />
+            </IconButton>)
+          }
         </ListItemSecondaryAction>
       </ListItem>
     );

@@ -12,7 +12,7 @@ import AddIcon from '@material-ui/icons/Add';
 import { withStyles } from '@material-ui/core/styles';
 import Backdrop from '@material-ui/core/Backdrop';
 import Switch from '@material-ui/core/Switch';
-import { authOrg, listOrgs} from './OrgService';
+import { authOrg } from './OrgService';
 
 
 const styles = ({

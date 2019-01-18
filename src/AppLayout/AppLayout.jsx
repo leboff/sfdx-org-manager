@@ -31,7 +31,7 @@ class AppLayout extends React.Component {
       search: '',
       orgs: {},
     };
-    
+
     this.refreshOrgList();
     this.handleSearchChange = this.handleSearchChange.bind(this);
     this.handleAddOrg = this.handleAddOrg.bind(this);

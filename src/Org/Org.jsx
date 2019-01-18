@@ -65,7 +65,7 @@ class Org extends React.Component {
         <ListItemText
           primary={
             <React.Fragment>
-              <Typography component="span" variant="subheading" color="textPrimary">
+              <Typography component="span" variant="subtitle1" color="textPrimary">
                 {org.alias}
                 {org.isDefaultUsername ? (
                   <Chip className={classes.chip} label="default" />

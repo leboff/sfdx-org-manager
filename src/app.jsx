@@ -10,6 +10,9 @@ const theme = createMuiTheme({
     primary: blue,
     secondary: indigo,
   },
+  typography: {
+    useNextVariants: true,
+  },
 });
 export default class App extends React.Component {
   render() {

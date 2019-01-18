@@ -5,6 +5,7 @@ import { withStyles } from '@material-ui/core/styles';
 import AppBar from './AppBar';
 import OrgList from '../Org/OrgList';
 import OrgNew from '../Org/OrgNew';
+import { listOrgs } from '../Org/OrgService';
 
 const styles = theme => ({
   root: {
@@ -28,14 +29,26 @@ class AppLayout extends React.Component {
 
     this.state = {
       search: '',
+      orgs: {},
     };
+    
+    this.refreshOrgList();
     this.handleSearchChange = this.handleSearchChange.bind(this);
+    this.handleAddOrg = this.handleAddOrg.bind(this);
   }
 
   handleSearchChange(search) {
     this.setState({
       search,
     });
+  }
+
+  refreshOrgList() {
+    listOrgs().then(orgs => this.setState({ orgs }));
+  }
+
+  handleAddOrg() {
+    this.refreshOrgList();
   }
 
   render() {
@@ -45,8 +58,8 @@ class AppLayout extends React.Component {
         <AppBar search={this.state.search} onSearchChange={this.handleSearchChange} />
         <main>
           <div className={classNames(classes.layout, classes.orgGrid)}>
-            <OrgList search={this.state.search} />
-            <OrgNew />
+            <OrgList search={this.state.search} orgs={this.state.orgs} />
+            <OrgNew onAddOrg={this.handleAddOrg} />
           </div>
         </main>
       </div>

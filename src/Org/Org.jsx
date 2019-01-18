@@ -13,9 +13,7 @@ import green from '@material-ui/core/colors/green';
 import deepOrange from '@material-ui/core/colors/deepOrange';
 import { Tooltip, Typography } from '@material-ui/core';
 import Chip from '@material-ui/core/Chip';
-
-const sfdx = require('sfdx-node');
-const opn = require('opn');
+import { openOrg } from './OrgService';
 
 const styles = ({
   greenAvatar: {
@@ -45,13 +43,7 @@ class Org extends React.Component {
   }
 
   open() {
-    sfdx.org.open({
-      targetusername: this.props.org.username,
-      urlonly: true,
-      json: true,
-    }).then((result) => {
-      opn(result.url);
-    });
+    openOrg(this.props.org.username);
   }
   isConnected() {
     if (this.props.org.connectedStatus === 'Connected') {

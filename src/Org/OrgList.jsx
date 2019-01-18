@@ -5,7 +5,6 @@ import { withStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import Org from './Org';
 
-const sfdx = require('sfdx-node');
 
 const styles = theme => ({
   root: {
@@ -32,23 +31,23 @@ class OrgList extends React.Component {
     };
   }
 
-  componentDidMount() {
-    this.getOrgs();
-  }
+  // componentDidMount() {
+  //   this.getOrgs();
+  // }
 
-  getOrgs() {
-    sfdx.org.list()
-    .then((orgs) => {
-      this.setState({
-        orgs,
-      });
-    });
-  }
+  // getOrgs() {
+  //   this.props.orgs
+  //   .then((orgs) => {
+  //     this.setState({
+  //       orgs,
+  //     });
+  //   });
+  // }
 
 
   render() {
     const { classes, search } = this.props;
-    if (!this.state.orgs.nonScratchOrgs) {
+    if (!this.props.orgs.nonScratchOrgs) {
       return <div>Loading...</div>;
     }
     return (
@@ -56,7 +55,7 @@ class OrgList extends React.Component {
         <Grid item xs={12}>
           <Grid container className={classes.demo} justify="center" spacing={32}>
             <List>
-              {this.state.orgs.nonScratchOrgs.filter(org => (
+              {this.props.orgs.nonScratchOrgs.filter(org => (
                 (org.alias && org.alias.includes(search)) ||
                 (org.username && org.username.includes(search))
               )).map(value => (
@@ -70,8 +69,10 @@ class OrgList extends React.Component {
   }
 }
 
+
 OrgList.propTypes = {
   search: PropTypes.string.isRequired,
+  orgs: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
   classes: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
 };
 

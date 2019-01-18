@@ -12,8 +12,8 @@ import AddIcon from '@material-ui/icons/Add';
 import { withStyles } from '@material-ui/core/styles';
 import Backdrop from '@material-ui/core/Backdrop';
 import Switch from '@material-ui/core/Switch';
+import { authOrg, listOrgs} from './OrgService';
 
-const sfdx = require('sfdx-node');
 
 const styles = ({
   fab: {
@@ -47,12 +47,9 @@ class OrgNew extends React.Component {
   handleAuth() {
     this.setState({ open: false });
     this.setState({ backdrop: true });
-    return sfdx.auth.webLogin({
-      setalias: this.state.alias,
-      setdefaultusername: this.state.setDefault,
-      instanceurl: 'https://test.salesforce.com',
-    })
+    return authOrg(this.state.alias, this.state.setDefault)
     .then(() => {
+      this.props.onAddOrg();
       this.handleClose();
     });
   }
@@ -138,7 +135,13 @@ class OrgNew extends React.Component {
   }
 }
 
+
+OrgNew.defaultProps = {
+  onAddOrg: () => {},
+};
+
 OrgNew.propTypes = {
+  onAddOrg: PropTypes.func,  // eslint-disable-line react/forbid-prop-types
   classes: PropTypes.object.isRequired,  // eslint-disable-line react/forbid-prop-types
 };
 

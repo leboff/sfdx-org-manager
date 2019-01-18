@@ -1,7 +1,10 @@
-import { app, BrowserWindow } from 'electron';
+import { app, BrowserWindow,  Menu, Tray  } from 'electron';
 import installExtension, { REACT_DEVELOPER_TOOLS } from 'electron-devtools-installer';
 import { enableLiveReload } from 'electron-compile';
+import { openOrg, listOrgs } from './Org/OrgService';
+import { createMethodSignature } from 'typescript';
 
+const path = require('path');
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow;
@@ -35,10 +38,52 @@ const createWindow = async () => {
   });
 };
 
+const open = (menuItem) => {
+  return openOrg(menuItem.sublabel);
+}
+
+const buildOrgMenuItems = async () => {
+  return listOrgs()
+  .then((orgs) => {
+    return orgs.nonScratchOrgs.map((org) => {
+      return {
+        label: org.alias ? ((org.isDefaultUsername ? '*' : '') + org.alias) : org.username,
+        sublabel: org.username,
+        click: open
+      }
+    });
+  });
+}
+
+let tray  = null;
+
+const createMenu = () => {
+  if(tray){
+    buildOrgMenuItems()
+    .then((menuItems) => {
+      menuItems.push({
+          label: 'Refresh',
+          click: createMenu,
+      });
+      const contextMenu = Menu.buildFromTemplate(menuItems);
+      tray.setContextMenu(contextMenu);
+    });
+  }
+}
+
+const createTray = async () => {
+  var iconPath = path.join(__dirname, 'cloud.png');
+  tray = new Tray(iconPath);
+  tray.setToolTip('SFDX Org Manager');
+  createMenu();
+}
+
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
 app.on('ready', createWindow);
+app.on('ready', createTray);
+
 
 // Quit when all windows are closed.
 app.on('window-all-closed', () => {

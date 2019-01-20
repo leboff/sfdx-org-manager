@@ -9,10 +9,11 @@ cache:
 
 stages:
   - release
-  - echo
   - deploy
 
 jobs:
+  allow_failures:
+    - os: windows
   include:
     - stage: release
       script:
@@ -62,4 +63,5 @@ jobs:
           tags: true
       os: windows
       if: tag =~ /^v/
+    
 

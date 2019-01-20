@@ -66,6 +66,9 @@ const createMenu = () => {
     buildOrgMenuItems()
     .then((menuItems) => {
       menuItems.push({
+        type: 'separator',
+      })
+      menuItems.push({
           label: 'Refresh',
           click: createMenu,
       });

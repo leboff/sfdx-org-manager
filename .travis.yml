@@ -1,0 +1,65 @@
+language: node_js
+
+node_js:
+  - lts/*
+
+cache:
+  - npm
+  - yarn
+
+stages:
+  - release
+  - echo
+  - deploy
+
+jobs:
+  include:
+    - stage: release
+      script:
+        - npx semantic-release
+      if: tag IS blank AND commit_message !~ /(chore\(release\))/
+    - stage: deploy 
+      before_script: npm install -g electron-forge
+      script:
+        - electron-forge make
+      deploy:
+        provider: releases
+        api_key: $GITHUB_TOKEN
+        file_glob: true
+        file: out/make/*
+        skip_cleanup: true
+        on:
+          tags: true
+      os: osx
+      if: tag =~ /^v/
+    - stage: deploy
+      before_install:
+        - sudo apt-get install -y fakeroot
+      before_script: npm install -g electron-forge
+      script:
+        - electron-forge make
+      deploy:
+        provider: releases
+        api_key: $GITHUB_TOKEN
+        file_glob: true
+        file: out/make/*
+        skip_cleanup: true
+        on:
+          tags: true
+      os: linux
+      if: tag =~ /^v/
+    - stage: deploy
+      before_script: npm install -g electron-forge
+      script:
+        - electron-forge make
+      deploy:
+        provider: releases
+        api_key: $GITHUB_TOKEN
+        file_glob: true
+        file: out/make/*
+        skip_cleanup: true
+        on:
+          tags: true
+      os: windows
+      if: tag =~ /^v/
+

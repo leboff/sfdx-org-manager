@@ -1,3 +1,15 @@
+# [1.1.0](https://github.com/leboff/sfdx-org-manager/compare/v1.0.0...v1.1.0) (2019-01-20)
+
+
+### Bug Fixes
+
+* **build:** remove echo stage and allow windows to fail ([5fc995c](https://github.com/leboff/sfdx-org-manager/commit/5fc995c))
+
+
+### Features
+
+* **tray:** add separator before refresh ([b464ebf](https://github.com/leboff/sfdx-org-manager/commit/b464ebf))
+
 # 1.0.0 (2019-01-20)
 
 

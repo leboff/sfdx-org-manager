@@ -9,8 +9,6 @@ export default class TrayBuilder {
 
   tray: Tray;
 
-  orgs: any;
-
   constructor(mainWindow: BrowserWindow) {
     this.mainWindow = mainWindow;
 
@@ -19,14 +17,34 @@ export default class TrayBuilder {
 
   openItem = menuItem => open(menuItem.sublabel);
 
-  buildMenuItems = orgs =>
-    orgs.nonScratchOrgs.map(org => ({
-      label: org.alias
-        ? (org.isDefaultUsername ? '*' : '') + org.alias
-        : org.username,
-      sublabel: org.username,
-      click: this.openItem
-    }));
+  buildMenuItem = org => ({
+    label: org.alias
+      ? (org.isDefaultUsername ? '*' : '') + org.alias
+      : org.username,
+    sublabel: org.username,
+    click: this.openItem
+  });
+
+  buildMenuItems = orgs => {
+    let menuItems = [];
+
+    menuItems.push({
+      type: 'normal',
+      label: 'Non-scratch Orgs',
+      enabled: false
+    });
+    if (orgs.nonScratchOrgs) {
+      menuItems = menuItems.concat(orgs.nonScratchOrgs.map(this.buildMenuItem));
+    }
+
+    menuItems.push({ type: 'separator' });
+    menuItems.push({ type: 'normal', label: 'Scratch Orgs', enabled: false });
+    if (orgs.nonScratchOrgs) {
+      menuItems = menuItems.concat(orgs.scratchOrgs.map(this.buildMenuItem));
+    }
+
+    return menuItems;
+  };
 
   refreshMenu = (ev, orgs) => {
     if (orgs.nonScratchOrgs && this.tray) {

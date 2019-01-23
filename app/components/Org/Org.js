@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ListItem from '@material-ui/core/ListItem';
-import OrgStatusAvatar from './OrgStatusAvatar';
+import OrgStatusButton from './OrgStatusButton';
 import OrgOpenButton from './OrgOpenButton';
 import OrgLabel from './OrgLabel';
 
@@ -14,7 +14,7 @@ export default class Org extends Component<Props> {
     const { org } = this.props;
     return (
       <ListItem>
-        <OrgStatusAvatar status={org.connectedStatus} />
+        <OrgStatusButton status={org.connectedStatus} />
         <OrgLabel
           alias={org.alias}
           username={org.username}

@@ -29,7 +29,7 @@ class OrgList extends Component<Props> {
     const { classes, orgs } = this.props;
 
 
-    const orgItems = orgs.nonScratchOrgs.map(org => <Org key={org.orgId} org={org} />);
+    const orgItems = orgs.map(org => <Org key={org.orgId} org={org} />);
     return (
       <Grid container spacing={24}>
         <Grid item xs={12}>

@@ -35,7 +35,7 @@ export default class OrgHome extends Component<Props> {
     const { orgs, query, search, list } = this.props;
     // const classes = styles();
     let orgList;
-    if (orgs.nonScratchOrgs) {
+    if (orgs) {
       orgList = <OrgList orgs={orgs} query={query} />;
     } else {
       orgList = <CircularProgress />;

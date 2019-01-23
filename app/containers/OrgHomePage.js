@@ -4,6 +4,7 @@ import OrgHome from '../components/OrgHome';
 import * as OrgActions from '../actions/orgs';
 
 const getVisibleOrgs = (orgs, filter) => {
+  console.log(orgs, filter);
   if(orgs && orgs.nonScratchOrgs && filter){
     return orgs.nonScratchOrgs.filter(
       org =>
@@ -11,7 +12,7 @@ const getVisibleOrgs = (orgs, filter) => {
         (org.username && org.username.includes(filter))
     )
   }
-  return orgs;
+  return orgs.nonScratchOrgs;
 }
 
 function mapStateToProps(state) {

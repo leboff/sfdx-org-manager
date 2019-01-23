@@ -1,14 +1,13 @@
 const { ipcRenderer } = require('electron');
 
 export default function orgUpdateSubscriber(store) {
+  let currentValue;
   return () => {
-    let currentValue;
-    const previousValue = currentValue && JSON.stringify(currentValue.orgs);
+    const previousValue = currentValue && JSON.stringify(currentValue);
     const state = store.getState();
-    currentValue = state && state.orgs;
+    currentValue = state.orgs;
 
     if (previousValue !== JSON.stringify(currentValue)) {
-      console.log('Orgs Updated!');
       ipcRenderer.send('orgs-updated', state.orgs);
     }
   };

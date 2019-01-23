@@ -4,6 +4,7 @@ const opn = require('opn');
 const sfdx = require('sfdx-node');
 
 export const LIST_ORGS = 'LIST_ORGS';
+export const EDIT_ORG = 'EDIT_ORG';
 export const SEARCH_ORGS = 'SEARCH_ORGS';
 
 export function listOrgs(orgs) {

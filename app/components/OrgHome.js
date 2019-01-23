@@ -1,7 +1,7 @@
 // @flow
 import React, { Component } from 'react';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import { Grid, Paper } from '@material-ui/core';
+import { Grid, Paper , Button, Backdrop} from '@material-ui/core';
 import { styled } from '@material-ui/styles';
 
 import OrgList from './Org/OrgList';
@@ -19,33 +19,20 @@ type Props = {
   list: () => void,
   search: () => void,
   query: string,
-  orgs: any
+  orgs: any,
 };
+
 
 export default class OrgHome extends Component<Props> {
   props: Props;
 
-  constructor(props: Props) {
-    super(props);
-
-    this.handleAddOrg.bind(this);
-  }
-
   componentDidMount() {
-    this.refreshList();
-  }
-
-  refreshList() {
     const { list } = this.props;
     list();
   }
 
-  handleAddOrg() {
-    this.refreshList();
-  }
-
   render() {
-    const { orgs, query, search } = this.props;
+    const { orgs, query, search, list } = this.props;
     // const classes = styles();
     let orgList;
     if (orgs.nonScratchOrgs) {
@@ -60,7 +47,7 @@ export default class OrgHome extends Component<Props> {
         <Grid container spacing={16} justify="center">
           <OrgPaper>
             {orgList}
-            <OrgNew onAddOrg={this.handleAddOrg} />
+            <OrgNew onAddOrg={list} />
           </OrgPaper>
         </Grid>
       </div>

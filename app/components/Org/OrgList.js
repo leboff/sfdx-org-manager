@@ -21,26 +21,15 @@ const styles = theme => ({
 });
 type Props = {
   orgs: any,
-  classes: any,
-  query: string
+  classes: any
 };
 
 class OrgList extends Component<Props> {
   render() {
-    const { classes, query, orgs } = this.props;
+    const { classes, orgs } = this.props;
 
-    let orgItems;
-    if (query) {
-      orgItems = orgs.nonScratchOrgs.filter(
-        org =>
-          (org.alias && org.alias.includes(query)) ||
-          (org.username && org.username.includes(query))
-      );
-    } else {
-      orgItems = orgs.nonScratchOrgs;
-    }
 
-    orgItems = orgItems.map(org => <Org key={org.orgId} org={org} />);
+    const orgItems = orgs.nonScratchOrgs.map(org => <Org key={org.orgId} org={org} />);
     return (
       <Grid container spacing={24}>
         <Grid item xs={12}>

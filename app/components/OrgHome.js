@@ -1,7 +1,7 @@
 // @flow
 import React, { Component } from 'react';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import { Grid, Paper , Button, Backdrop} from '@material-ui/core';
+import { Grid, Paper } from '@material-ui/core';
 import { styled } from '@material-ui/styles';
 
 import OrgList from './Org/OrgList';
@@ -19,9 +19,8 @@ type Props = {
   list: () => void,
   search: () => void,
   query: string,
-  orgs: any,
+  orgs: any
 };
-
 
 export default class OrgHome extends Component<Props> {
   props: Props;

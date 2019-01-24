@@ -28,7 +28,6 @@ class OrgList extends Component<Props> {
   render() {
     const { classes, orgs } = this.props;
 
-
     const orgItems = orgs.map(org => <Org key={org.orgId} org={org} />);
     return (
       <Grid container spacing={24}>

@@ -14,7 +14,10 @@ export default class Org extends Component<Props> {
     const { org } = this.props;
     return (
       <ListItem>
-        <OrgStatusButton status={org.connectedStatus} />
+        <OrgStatusButton
+          status={org.connectedStatus}
+          devHubOrgId={org.devHubOrgId}
+        />
         <OrgLabel
           alias={org.alias}
           username={org.username}

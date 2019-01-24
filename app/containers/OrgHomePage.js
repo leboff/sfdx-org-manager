@@ -3,16 +3,17 @@ import { connect } from 'react-redux';
 import OrgHome from '../components/OrgHome';
 import * as OrgActions from '../actions/orgs';
 
+const orgFilter = filter => org =>
+  (org.alias && org.alias.includes(filter)) ||
+  (org.username && org.username.includes(filter));
+
 const getVisibleOrgs = (orgs, filter) => {
-  console.log(orgs, filter);
-  if (orgs && orgs.nonScratchOrgs && filter) {
-    return orgs.nonScratchOrgs.filter(
-      org =>
-        (org.alias && org.alias.includes(filter)) ||
-        (org.username && org.username.includes(filter))
-    );
+  let filteredOrgs = [];
+  filteredOrgs = filteredOrgs.concat(orgs.nonScratchOrgs, orgs.scratchOrgs);
+  if (filter) {
+    return filteredOrgs.filter(orgFilter(filter));
   }
-  return orgs.nonScratchOrgs;
+  return filteredOrgs;
 };
 
 function mapStateToProps(state) {

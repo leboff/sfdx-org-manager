@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import CloudIcon from '@material-ui/icons/Cloud';
+import { Cloud, AccessTime } from '@material-ui/icons';
 import { styled } from '@material-ui/styles';
 import { green, deepOrange } from '@material-ui/core/colors';
 import { Fab } from '@material-ui/core';
 
 type Props = {
-  status: string
+  status: string,
+  devHubOrgId: string
 };
 
 const BaseFab = {
@@ -35,13 +36,9 @@ export default class OrgStatusButton extends Component<Props> {
   props: Props;
 
   render() {
-    const { status } = this.props;
+    const { status, devHubOrgId } = this.props;
     const StatusFab = status === 'Connected' ? GreenFab : OrangeFab;
-
-    return (
-      <StatusFab aria-label="edit" >
-        <CloudIcon />
-      </StatusFab>
-    );
+    const OrgIcon = devHubOrgId ? <AccessTime /> : <Cloud />;
+    return <StatusFab aria-label="edit">{OrgIcon}</StatusFab>;
   }
 }

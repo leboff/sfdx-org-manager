@@ -4,6 +4,7 @@ import OrgStatusButton from './OrgStatusButton';
 import OrgOpenButton from './OrgOpenButton';
 import OrgLabel from './OrgLabel';
 import { Org } from '../../types/org';
+
 type Props = {
   org: Org
 };

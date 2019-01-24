@@ -3,6 +3,7 @@ import Grid from '@material-ui/core/Grid';
 import List from '@material-ui/core/List';
 import OrgListItem from './OrgListItem';
 import { Org } from '../../types/org';
+
 type Props = {
   orgs: Org[]
 };

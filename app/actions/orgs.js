@@ -5,12 +5,26 @@ const sfdx = require('sfdx-node');
 
 export const LIST_ORGS = 'LIST_ORGS';
 export const EDIT_ORG = 'EDIT_ORG';
+export const CANCEL_EDIT = 'CANCEL_EDIT';
 export const SEARCH_ORGS = 'SEARCH_ORGS';
 
 export function listOrgs(orgs) {
   return {
     type: LIST_ORGS,
     orgs
+  };
+}
+
+export function editOrg(editModeOrg) {
+  return {
+    type: EDIT_ORG,
+    editModeOrg
+  };
+}
+
+export function cancelEdit() {
+  return {
+    type: CANCEL_EDIT
   };
 }
 

@@ -5,6 +5,7 @@ import { green, deepOrange } from '@material-ui/core/colors';
 import { Fab } from '@material-ui/core';
 
 type Props = {
+  onClick: () => void,
   status: string,
   devHubOrgId: string
 };
@@ -36,9 +37,13 @@ export default class OrgStatusButton extends Component<Props> {
   props: Props;
 
   render() {
-    const { status, devHubOrgId } = this.props;
+    const { status, devHubOrgId, onClick } = this.props;
     const StatusFab = status === 'Connected' ? GreenFab : OrangeFab;
     const OrgIcon = devHubOrgId ? <AccessTime /> : <Cloud />;
-    return <StatusFab aria-label="edit">{OrgIcon}</StatusFab>;
+    return (
+      <StatusFab onClick={onClick} aria-label="edit">
+        {OrgIcon}
+      </StatusFab>
+    );
   }
 }

@@ -9,6 +9,8 @@ export type Org = {
   edition: string,
   expirationDate: string,
   instanceUrl: string,
+  isDefaultUsername: boolean,
+  isDevHub: boolean,
   isExpired: boolean,
   lastUsed: string,
   loginUrl: string,

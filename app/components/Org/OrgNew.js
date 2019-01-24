@@ -92,7 +92,9 @@ class OrgNew extends Component {
         <Dialog open={backdrop}>
           <DialogTitle id="form-dialog-title">Authenticating</DialogTitle>
           <DialogContent>
-            <CircularProgress />
+            <div style={{ display: 'flex', justifyContent: 'center' }}>
+              <CircularProgress />
+            </div>
           </DialogContent>
         </Dialog>
         <Dialog

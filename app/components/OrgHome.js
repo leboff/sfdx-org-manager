@@ -12,7 +12,9 @@ const OrgPaper = styled(Paper)({
   padding: '20px',
   marginTop: '64px',
   marginLeft: '10px',
-  marginRight: '10px'
+  marginRight: '10px',
+  minHeight: '450px',
+  minWidth: '450px'
 });
 
 type Props = {
@@ -34,10 +36,15 @@ export default class OrgHome extends Component<Props> {
     const { orgs, query, search, list } = this.props;
     // const classes = styles();
     let orgList;
-    if (orgs) {
+    if (orgs.length > 0) {
       orgList = <OrgList orgs={orgs} query={query} />;
     } else {
-      orgList = <CircularProgress />;
+      orgList = (
+        <div style={{ display: 'flex', justifyContent: 'center' }}>
+          {' '}
+          <CircularProgress />{' '}
+        </div>
+      );
     }
 
     return (

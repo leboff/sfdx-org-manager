@@ -1,0 +1,20 @@
+export type Org = {
+  connectedStatus: string,
+  created: number,
+  createdBy: string,
+  createdDate: string,
+  createdOrgInstance: string,
+  devHubOrgId: string,
+  devHubUsername: string,
+  edition: string,
+  expirationDate: string,
+  instanceUrl: string,
+  isExpired: boolean,
+  lastUsed: string,
+  loginUrl: string,
+  orgId: string,
+  orgName: string,
+  signupUsername: string,
+  status: string,
+  username: string
+};

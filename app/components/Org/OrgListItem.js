@@ -3,11 +3,11 @@ import ListItem from '@material-ui/core/ListItem';
 import OrgStatusButton from './OrgStatusButton';
 import OrgOpenButton from './OrgOpenButton';
 import OrgLabel from './OrgLabel';
-
+import { Org } from '../../types/org';
 type Props = {
-  org: any
+  org: Org
 };
-export default class Org extends Component<Props> {
+export default class OrgListItem extends Component<Props> {
   props: Props;
 
   render() {

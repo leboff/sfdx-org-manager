@@ -4,6 +4,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import { Grid, Paper } from '@material-ui/core';
 import { styled } from '@material-ui/styles';
 
+import { Org } from '../types/org';
 import OrgList from './Org/OrgList';
 import OrgNew from './Org/OrgNew';
 import SearchBar from './SearchBar';
@@ -21,7 +22,7 @@ type Props = {
   list: () => void,
   search: () => void,
   query: string,
-  orgs: any
+  orgs: Org[]
 };
 
 export default class OrgHome extends Component<Props> {

@@ -31,20 +31,6 @@ matrix:
         - ELECTRON_CACHE=$HOME/.cache/electron
         - ELECTRON_BUILDER_CACHE=$HOME/.cache/electron-builder
 
-    - stage: build
-      os:
-        - linux
-        - osx
-        - windows
-      script:
-        - yarn package-ci
-        - yarn lint
-        - yarn flow
-        # HACK: Temporarily ignore `yarn test` on linux
-        - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then yarn test; fi
-        # - yarn build-e2e
-        # - yarn test-e2e
-      if: commit_message !~ /chore\(release\)/ OR tag IS present
     - stage: release
       script: yarn release
 
@@ -88,6 +74,16 @@ before_script:
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sleep 3; fi
 
 
+script:
+  - yarn package-ci
+  - yarn lint
+  - yarn flow
+  # HACK: Temporarily ignore `yarn test` on linux
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then yarn test; fi
+  # - yarn build-e2e
+  # - yarn test-e2e
+
 stages:
-  - build
-  - release
+  - name: test
+    if: commit_message !~ /chore\(release\)/ OR tag IS present
+  - name: release

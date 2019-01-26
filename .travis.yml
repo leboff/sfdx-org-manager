@@ -12,6 +12,7 @@ matrix:
   include:
     - stage: test
       script:
+        - yarn build
         - yarn lint
         - yarn flow
         - yarn test
@@ -20,10 +21,12 @@ matrix:
         # - yarn test-e2e
 
     - stage: release
-      script:
-        - brew install rpm
-        - yarn release
-
+      before_install: brew install rpm
+      script: skip
+      deploy:
+        provider: script
+        skip_cleanup: true
+        script: yarn release
 
 before_cache:
   - rm -rf $HOME/.cache/electron-builder/wine

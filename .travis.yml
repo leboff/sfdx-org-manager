@@ -32,6 +32,10 @@ matrix:
         - ELECTRON_BUILDER_CACHE=$HOME/.cache/electron-builder
 
     - stage: build
+      os:
+        - linux
+        - osx
+        - windows
       script:
         - yarn package-ci
         - yarn lint
@@ -84,3 +88,6 @@ before_script:
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sleep 3; fi
 
 
+stages:
+  - build
+  - release

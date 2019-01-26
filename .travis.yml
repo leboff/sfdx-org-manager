@@ -10,14 +10,24 @@ env:
 
 matrix:
   include:
+    - stage: test
+      script:
+        - yarn lint
+        - yarn flow
+        - yarn test
+        # TODO: Build E2E tests
+        # - yarn build-e2e
+        # - yarn test-e2e
+
     - stage: release
-      script: yarn release
+      script:
+        - brew install rpm
+        - yarn release
+
 
 before_cache:
   - rm -rf $HOME/.cache/electron-builder/wine
-
-before_install:
-  - brew install rpm
+  - brew cleanup
 
 cache:
   yarn: true
@@ -27,12 +37,5 @@ cache:
     - flow-typed
     - $HOME/.cache/electron
     - $HOME/.cache/electron-builder
-
-script:
-  - yarn lint
-  - yarn flow
-  # HACK: Temporarily ignore `yarn test` on linux
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then yarn test; fi
-  # - yarn build-e2e
-  # - yarn test-e2e
+    - $HOME/Library/Caches/Homebrew
 

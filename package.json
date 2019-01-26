@@ -104,8 +104,8 @@
     },
     "publish": {
       "provider": "github",
-      "owner": "electron-react-boilerplate",
-      "repo": "electron-react-boilerplate",
+      "owner": "leboff",
+      "repo": "sfdx-org-manager",
       "private": false
     }
   },

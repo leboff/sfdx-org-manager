@@ -1,19 +1,17 @@
+language: node_js
+node_js:
+  - node
+
 matrix:
   allow_failures:
     - os: windows
   include:
     - os: osx
-      language: node_js
-      node_js:
-        - node
       env:
         - ELECTRON_CACHE=$HOME/.cache/electron
         - ELECTRON_BUILDER_CACHE=$HOME/.cache/electron-builder
 
     - os: linux
-      language: node_js
-      node_js:
-        - node
       addons:
         apt:
           sources:
@@ -29,9 +27,6 @@ matrix:
             - rpm
 
     - os: windows
-      language: node_js
-      node_js:
-        - node
       env:
         - ELECTRON_CACHE=$HOME/.cache/electron
         - ELECTRON_BUILDER_CACHE=$HOME/.cache/electron-builder

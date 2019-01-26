@@ -12,8 +12,11 @@
       "npmPublish": false
     }],
     ['@semantic-release/git', {
-      'assets': ['CHANGELOG.md', 'package.json', 'package-lock.json', 'npm-shrinkwrap.json'],
-      "message": "chore(release): ${nextRelease.version}\n\n${nextRelease.notes}"
-    }]
+      'assets': ['CHANGELOG.md', 'package.json', 'package-lock.json', 'npm-shrinkwrap.json']
+    }],
+    ['@semantic-release/exec', {
+      'prepareCmd': "yarn package-ci" ,
+      "publishCmd": "electron-builder --publish"
+    }],
   ]
 }

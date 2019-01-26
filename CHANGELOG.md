@@ -1,3 +1,21 @@
+# 1.0.0 (2019-01-26)
+
+
+### Bug Fixes
+
+* **build:** remove font awesome reference ([e2b0809](https://github.com/leboff/sfdx-org-manager/commit/e2b0809))
+* **org:** fix org listing ([47f6c90](https://github.com/leboff/sfdx-org-manager/commit/47f6c90))
+* **orgs:** fix org subscriber ([0d0e25c](https://github.com/leboff/sfdx-org-manager/commit/0d0e25c))
+
+
+### Features
+
+* **app:** initial commit ([1aa64b8](https://github.com/leboff/sfdx-org-manager/commit/1aa64b8))
+* **org:** list both scratch and non scratch orgs ([10f1fb7](https://github.com/leboff/sfdx-org-manager/commit/10f1fb7))
+* **org:** start on edit work ([c0d0d00](https://github.com/leboff/sfdx-org-manager/commit/c0d0d00))
+* **orgItem:** add status as fab button ([028e7b4](https://github.com/leboff/sfdx-org-manager/commit/028e7b4))
+* **tray:** clean up the tray and include non scratch orgs ([9698938](https://github.com/leboff/sfdx-org-manager/commit/9698938))
+
 # 0.17.1 (2018.11.20)
 
 - Fix `yarn test-e2e` and testcafe for single package.json structure

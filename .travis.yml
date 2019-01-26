@@ -87,3 +87,4 @@ stages:
   - name: test
     if: commit_message !~ /chore\(release\)/ OR tag IS present
   - name: release
+    if: commit_message !~ /chore\(release\)/ OR tag IS present

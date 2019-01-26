@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/leboff/sfdx-org-manager/compare/v1.0.2...v1.1.0) (2019-01-26)
+
+
+### Features
+
+* **build:** one job to build them all ([4b8d047](https://github.com/leboff/sfdx-org-manager/commit/4b8d047))
+
 ## [1.0.2](https://github.com/leboff/sfdx-org-manager/compare/v1.0.1...v1.0.2) (2019-01-26)
 
 

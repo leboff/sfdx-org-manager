@@ -36,6 +36,10 @@ matrix:
         - ELECTRON_CACHE=$HOME/.cache/electron
         - ELECTRON_BUILDER_CACHE=$HOME/.cache/electron-builder
 
+    - stage: release
+      script: yarn release
+
+
 before_cache:
   - rm -rf $HOME/.cache/electron-builder/wine
 
@@ -82,4 +86,3 @@ script:
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then yarn test; fi
   - yarn build-e2e
   - yarn test-e2e
-  - yarn release

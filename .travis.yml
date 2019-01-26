@@ -16,7 +16,7 @@ matrix:
         - yarn lint
         - yarn flow
         - yarn test
-        # TODO: Build E2E tests
+        # TODO: Build E2E tests!
         # - yarn build-e2e
         # - yarn test-e2e
 

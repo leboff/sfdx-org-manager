@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/leboff/sfdx-org-manager/compare/v1.0.0...v1.0.1) (2019-01-26)
+
+
+### Bug Fixes
+
+* **build:** really just forcing a build ([d5a519b](https://github.com/leboff/sfdx-org-manager/commit/d5a519b))
+
 # 1.0.0 (2019-01-26)
 
 

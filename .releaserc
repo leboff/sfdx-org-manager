@@ -16,7 +16,7 @@
     }],
     ['@semantic-release/exec', {
       'prepareCmd': "yarn package-ci" ,
-      "publishCmd": "electron-builder --publish"
+      "publishCmd": "electron-builder build --publish --always"
     }],
   ]
 }

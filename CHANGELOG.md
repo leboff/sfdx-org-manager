@@ -1,3 +1,18 @@
+# [1.1.0](https://github.com/leboff/sfdx-org-manager/compare/v1.0.2...v1.1.0) (2019-01-27)
+
+
+### Bug Fixes
+
+* **build:** force build ([615ef3d](https://github.com/leboff/sfdx-org-manager/commit/615ef3d))
+
+
+### Features
+
+* **build:** fix package, travis yml ([0a3c9ba](https://github.com/leboff/sfdx-org-manager/commit/0a3c9ba))
+* **build:** fix up travis a bit ([32e7bb9](https://github.com/leboff/sfdx-org-manager/commit/32e7bb9))
+* **build:** i need to see a build ([381cc5d](https://github.com/leboff/sfdx-org-manager/commit/381cc5d))
+* **build:** one job to build them all ([4b8d047](https://github.com/leboff/sfdx-org-manager/commit/4b8d047))
+
 # [1.1.0](https://github.com/leboff/sfdx-org-manager/compare/v1.0.2...v1.1.0) (2019-01-26)
 
 

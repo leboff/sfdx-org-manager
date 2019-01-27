@@ -1,7 +1,7 @@
 {
   "name": "sfdx-org-manager",
   "productName": "SFDX Org Manager",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "App for managing SFDX authenticated orgs",
   "scripts": {
     "build": "concurrently \"yarn build-main\" \"yarn build-renderer\"",

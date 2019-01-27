@@ -1,3 +1,11 @@
+## [1.1.1](https://github.com/leboff/sfdx-org-manager/compare/v1.1.0...v1.1.1) (2019-01-27)
+
+
+### Bug Fixes
+
+* **bug:** apparently empty object is no good ([72f39ba](https://github.com/leboff/sfdx-org-manager/commit/72f39ba))
+* **build:** apparently never was right ([4e72662](https://github.com/leboff/sfdx-org-manager/commit/4e72662))
+
 # [1.1.0](https://github.com/leboff/sfdx-org-manager/compare/v1.0.2...v1.1.0) (2019-01-27)
 
 

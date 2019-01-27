@@ -1,3 +1,10 @@
+## [1.1.2](https://github.com/leboff/sfdx-org-manager/compare/v1.1.1...v1.1.2) (2019-01-27)
+
+
+### Bug Fixes
+
+* **build:** i'm a dumb dumb ([c72b988](https://github.com/leboff/sfdx-org-manager/commit/c72b988))
+
 ## [1.1.1](https://github.com/leboff/sfdx-org-manager/compare/v1.1.0...v1.1.1) (2019-01-27)
 
 

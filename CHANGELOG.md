@@ -1,3 +1,11 @@
+## [1.1.4](https://github.com/leboff/sfdx-org-manager/compare/v1.1.3...v1.1.4) (2019-01-28)
+
+
+### Bug Fixes
+
+* **build:** let's do the releasing from semantic-release ([bf36525](https://github.com/leboff/sfdx-org-manager/commit/bf36525))
+* **build:** remove msi target ([6a2dfa1](https://github.com/leboff/sfdx-org-manager/commit/6a2dfa1))
+
 ## [1.1.3](https://github.com/leboff/sfdx-org-manager/compare/v1.1.2...v1.1.3) (2019-01-28)
 
 

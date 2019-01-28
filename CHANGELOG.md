@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/leboff/sfdx-org-manager/compare/v1.1.4...v1.2.0) (2019-01-28)
+
+
+### Features
+
+* **app:** include devtools and reload in release ([eccac68](https://github.com/leboff/sfdx-org-manager/commit/eccac68))
+
 ## [1.1.4](https://github.com/leboff/sfdx-org-manager/compare/v1.1.3...v1.1.4) (2019-01-28)
 
 ### Bug Fixes

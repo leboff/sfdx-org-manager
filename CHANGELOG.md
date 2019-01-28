@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/leboff/sfdx-org-manager/compare/v1.2.0...v1.2.1) (2019-01-28)
+
+
+### Bug Fixes
+
+* **menu:** add reload/refresh to all versions not just osx ([3f95b78](https://github.com/leboff/sfdx-org-manager/commit/3f95b78))
+
 # [1.2.0](https://github.com/leboff/sfdx-org-manager/compare/v1.1.4...v1.2.0) (2019-01-28)
 
 

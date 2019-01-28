@@ -18,7 +18,8 @@
     "lint-styles-fix": "yarn --silent lint-styles --fix; exit 0",
     "package": "yarn build && electron-builder build --publish never",
     "package-all": "yarn build && electron-builder build -mwl",
-    "package-ci": "yarn postinstall && yarn build && electron-builder -mwl ",
+    "package-ci": "yarn postinstall && yarn build && electron-builder build -mwl",
+    "package-release": "yarn postinstall && yarn build && electron-builder build -mwl --publish always",
     "package-linux": "yarn build && electron-builder build --linux",
     "package-win": "yarn build && electron-builder build --win --x64",
     "postinstall": "yarn flow-typed && electron-builder install-app-deps package.json && yarn build-dll && opencollective-postinstall",
@@ -65,9 +66,7 @@
       "app/main.prod.js",
       "app/main.prod.js.map",
       "app/includes/",
-      "package.json",
-      "!**/node_modules/@material-ui/icons/*",
-      "**/node_modules/@material-ui/icons/{Menu,Search,Add,OpenInBrowser,Cloud}.js"
+      "package.json"
     ],
     "dmg": {
       "contents": [

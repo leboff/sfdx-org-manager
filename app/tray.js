@@ -11,7 +11,6 @@ export default class TrayBuilder {
 
   constructor(mainWindow: BrowserWindow) {
     this.mainWindow = mainWindow;
-
     ipcMain.on('orgs-updated', this.refreshMenu);
   }
 

@@ -18,9 +18,7 @@
       'prepareCmd': "yarn package-ci"
     }],
     ["@semantic-release/github", {
-      "assets": [
-        {"path": "release/*.*", "label": "App Distribution"}
-      ]
+      "assets": "release/*.*"
     }]
   ]
 }

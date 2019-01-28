@@ -15,8 +15,12 @@
       'assets': ['CHANGELOG.md', 'package.json', 'package-lock.json', 'npm-shrinkwrap.json']
     }],
     ['@semantic-release/exec', {
-      'prepareCmd': "yarn package-ci" ,
-      "publishCmd": "yarn package-release"
+      'prepareCmd': "yarn package-ci"
     }],
+    ["@semantic-release/github", {
+      "assets": [
+        {"path": "release/*.*", "label": "App Distribution"}
+      ]
+    }]
   ]
 }
